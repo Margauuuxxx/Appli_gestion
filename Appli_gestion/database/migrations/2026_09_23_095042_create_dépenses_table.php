@@ -13,7 +13,14 @@ class CreateDépensesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('depenses', function (Blueprint $table) {
+            $table->id();
+            $table->string('label');
+            $table->string('category');
+            $table->decimal('amount', 10, 2);
+            $table->date('spent_at');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateDépensesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('depenses');
     }
 }

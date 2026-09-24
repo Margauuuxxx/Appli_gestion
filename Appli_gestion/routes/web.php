@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GroupeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware('auth')->group(function () {
+    Route::get('/', [GroupeController::class, 'home'])->name('home');
+    Route::get('/bilan', [GroupeController::class, 'bilan'])->name('bilan');
+    Route::get('/profil', [GroupeController::class, 'profile'])->name('profile');
+    Route::get('/depenses/create', [GroupeController::class, 'create'])->name('depenses.create');
+    Route::post('/depenses', [GroupeController::class, 'store'])->name('depenses.store');
 });
+
+Route::middleware('guest')->group(function () {
+    Route::get('/connexion', [AuthController::class, 'showLogin'])->name('login');
+    Route::post('/connexion', [AuthController::class, 'login'])->name('login.store');
+    Route::get('/inscription', [AuthController::class, 'showRegister'])->name('register');
+    Route::post('/inscription', [AuthController::class, 'register'])->name('register.store');
+});
+
+Route::post('/deconnexion', [AuthController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
