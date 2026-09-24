@@ -44,10 +44,6 @@
                     <a href="{{ route('depenses.create') }}" class="btn-add">+ Ajouter une dépense</a>
                 </header>
 
-                @if (session('success'))
-                    <div class="notice">{{ session('success') }}</div>
-                @endif
-
                 <section class="row">
                     <div class="panel">
                         <div class="panel-head">
