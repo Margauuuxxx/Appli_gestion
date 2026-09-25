@@ -20,6 +20,14 @@
                     @csrf
                     <label for="name">Nom</label>
                     <input id="name" name="name" type="text" value="{{ old('name') }}" autocomplete="name" required autofocus>
+                    <label for="firstname">Prénom</label>
+                    <input id="firstname" name="firstname" type="text" value="{{ old('firstname') }}" autocomplete="given-name" required>
+                    <label for="age">Âge</label>
+                    <input id="age" name="age" type="number" value="{{ old('age') }}" min="1" max="120" required>
+                    <label for="address">Adresse</label>
+                    <input id="address" name="address" type="text" value="{{ old('address') }}" autocomplete="street-address" required>
+                    <label for="phone">Numéro de téléphone</label>
+                    <input id="phone" name="phone" type="tel" value="{{ old('phone') }}" autocomplete="tel" required>
                     <label for="email">E-mail</label>
                     <input id="email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required>
                     <label for="password">Mot de passe</label>

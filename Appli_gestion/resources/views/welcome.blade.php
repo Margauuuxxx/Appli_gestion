@@ -27,9 +27,9 @@
                     <h3>Profils</h3>
 
                     <a href="{{ route('profile') }}" class="profile-item" style="text-decoration: none; color: inherit;">
-                        <span class="avatar">A</span>
+                        <span class="avatar">{{ strtoupper(substr(auth()->user()->firstname ?: auth()->user()->name, 0, 1)) }}</span>
                         <div>
-                            <strong>Alice</strong>
+                            <strong>{{ auth()->user()->firstname ?: auth()->user()->name }}</strong>
                         </div>
                     </a>
                 </div>
@@ -38,7 +38,7 @@
             <main class="main">
                 <header class="topbar">
                     <div>
-                        <p>Bonjour, Alice</p>
+                        <p>Bonjour, {{ auth()->user()->firstname ?: auth()->user()->name }}</p>
                         <h2>Résumé du mois</h2>
                     </div>
                     <a href="{{ route('depenses.create') }}" class="btn-add">+ Ajouter une dépense</a>

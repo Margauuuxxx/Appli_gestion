@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Profil Alice - Budgetly</title>
+        <title>Profil {{ $user->firstname ?: $user->name }} - Budgetly</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
@@ -26,9 +26,9 @@
                 <div class="profile-box">
                     <h3>Profils</h3>
                     <div class="profile-item">
-                        <span class="avatar">A</span>
+                        <span class="avatar">{{ strtoupper(substr($user->firstname ?: $user->name, 0, 1)) }}</span>
                         <div>
-                            <strong>Alice</strong>
+                            <strong>{{ $user->firstname ?: $user->name }}</strong>
                         </div>
                     </div>
                 </div>
@@ -56,51 +56,51 @@
                     <div class="account-list">
                         <div class="account-item main">
                             <div>
-                                <strong>{{ $user['name'] }} {{ $user['firstname'] }}</strong>
-                                <small>{{ $user['status'] }}</small>
+                                <strong>{{ $user->firstname }} {{ $user->name }}</strong>
+                                <small>Compte principal</small>
                             </div>
-                            <span class="avatar">A</span>
+                            <span class="avatar">{{ strtoupper(substr($user->firstname ?: $user->name, 0, 1)) }}</span>
                         </div>
 
                         <div class="account-item">
                             <div>
                                 <strong>Prénom</strong>
-                                <small>{{ $user['firstname'] }}</small>
+                                <small>{{ $user->firstname ?: 'Non renseigné' }}</small>
                             </div>
                         </div>
 
                         <div class="account-item">
                             <div>
                                 <strong>Nom</strong>
-                                <small>{{ $user['name'] }}</small>
+                                <small>{{ $user->name }}</small>
                             </div>
                         </div>
 
                         <div class="account-item">
                             <div>
                                 <strong>Email</strong>
-                                <small>{{ $user['email'] }}</small>
+                                <small>{{ $user->email }}</small>
                             </div>
                         </div>
 
                         <div class="account-item">
                             <div>
-                                <strong>Ville</strong>
-                                <small>{{ $user['city'] }}</small>
+                                <strong>Âge</strong>
+                                <small>{{ $user->age ? $user->age . ' ans' : 'Non renseigné' }}</small>
                             </div>
                         </div>
 
                         <div class="account-item">
                             <div>
                                 <strong>Téléphone</strong>
-                                <small>********</small>
+                                <small>{{ $user->phone ?: 'Non renseigné' }}</small>
                             </div>
                         </div>
 
                         <div class="account-item">
                             <div>
-                                <strong>Membre depuis</strong>
-                                <small>{{ $user['member_since'] }}</small>
+                                <strong>Adresse</strong>
+                                <small>{{ $user->address ?: 'Non renseignée' }}</small>
                             </div>
                         </div>
                     </div>

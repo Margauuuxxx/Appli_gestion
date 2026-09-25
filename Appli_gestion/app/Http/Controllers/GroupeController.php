@@ -42,17 +42,7 @@ class GroupeController extends Controller
 
 	public function profile()
 	{
-		$user = [
-			'name' => 'Alice',
-			'firstname' => 'Alice',
-			'email' => 'alice@budget.fr',
-			'city' => 'Paris',
-			'phone' => '+33 6 12 34 56 78',
-			'status' => 'Compte principal',
-			'member_since' => 'Janvier 2025',
-		];
-
-		return view('profil', ['user' => $user]);
+		return view('profil', ['user' => auth()->user()]);
 	}
 
 	public function create()
